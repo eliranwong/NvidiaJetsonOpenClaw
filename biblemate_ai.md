@@ -66,6 +66,12 @@ On a local machine, add the following line in `~/.bashrc`
 alias nanobible="open http://$(getent hosts ubuntu.local | awk '{print $1}'):33355"
 ```
 
+## Refresh Environment Variables
+
+```
+source ~/.bashrc
+```
+
 ## Configure Custom MCP
 
 Confiure mcp auth token:
@@ -114,7 +120,13 @@ Assuming you have installed the [custom skill](openclaw.md#install-custom-skills
 1. Create a telegram group
 2. Add the main agent in the group
 3. In the newly created group, ask the main agent `What is the current group id`. Copy the group id, e.g. -5888888888.
-4. In the main againt chat, send the following message:
+4. Install bible study skill for OpenClaw, run:
+
+```
+biblematemcpskill -o
+```
+
+5. In the main againt chat, send the following message:
 
 ```
 I created a new Telegram group, with a group id -5888888888. I want you to create an isolated agent bible-study and bind it to that group, so I can talk to the bible-study agent in the group. Configure the bible-study agent to use model `google-gemini-cli/gemini-3-flash-preview`.
