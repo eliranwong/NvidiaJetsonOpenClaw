@@ -20,7 +20,7 @@ Add the following lines in `~/.bashrc`
 # Setup venv path
 export PATH=$PATH:$HOME/ai/bin
 
-# Function to start BibleMate servers
+# BibleMate servers
 ## web server
 start_bmweb() {
   echo "Starting BibleMate AI WEB server ..."
