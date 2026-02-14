@@ -15,6 +15,10 @@ DEFAULT_AI_BACKEND=googleai
 GOOGLEAI_API_KEY=<your_gemini_api_key>
 ```
 
+In addition, make sure ollama is set up and `paraphrase-multilingual` is downloaded, read:
+
+https://github.com/eliranwong/NvidiaJetsonOpenClaw/blob/main/basic_tools.md#install-ollama
+
 ## Setup BibleMate Data
 
 ```
