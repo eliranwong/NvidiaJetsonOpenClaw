@@ -1,4 +1,4 @@
-# PixelPhoneOpenClaw
+# Nvidia Jetson OpenClaw
 
 This repository contains notes and scripts for setting up OpenClaw on a Nvidia Jetson Orin Nano Super Developer Kit. These are growing notes as I continue to experiment.
 
@@ -7,10 +7,6 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 ## Tested Device
 
 - Nvidia Jetson Orin Nano Super Developer Kit
-
-# Screenshot
-
-<img width="417" height="454" alt="Image" src="https://github.com/user-attachments/assets/558fa8bc-c36f-463f-8842-e8cb86cb0281" />
 
 ## Tested AI Backends
 
