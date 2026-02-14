@@ -24,6 +24,8 @@ openclaw pairing approve telegram <PAIRING_CODE>
 
 This lets you isolate the agent's memory and select the most appropriate model for the task.
 
+Assuming you have installed the [custom skill](openclaw.md#install-custom-skills) `isolated-agent-creator`:
+
 1. Ask the main agent to create a new agent with a dedicated workspace.
 2. Disable privacy mode for the bot in the **@BotFather** chat so the bot can read all messages in the group:
 
@@ -37,5 +39,10 @@ This lets you isolate the agent's memory and select the most appropriate model f
 4. Add the bot to the group.
 5. In the **newly created group chat**, send: `@mybot_bot What is the current group id?`
 6. Copy the group ID from the bot's reply.
-7. In the **main agent chat** (not the group chat), ask the main agent to bind the newly created agent to the group using the ID from the previous step.
+7. In the **main agent chat** (not the group chat), ask the main agent to bind the newly created agent to the group using the ID from the previous step, e.g.:
+
+```
+I created a new Telegram group, with a group id -5888888888. I want you to create an isolated agent bible-study and bind it to that group, so I can talk to the bible-study agent in the group. Configure the bible-study agent to use model `google-gemini-cli/gemini-3-flash-preview`.
+```
+
 8. Specify the model to use for the agent in the group chat.

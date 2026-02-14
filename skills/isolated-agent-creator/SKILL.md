@@ -146,12 +146,11 @@ Edit `~/.openclaw/openclaw.json` to add/fix the agent config:
   "name": "<Agent Display Name>",
   "workspace": "/home/<user>/.openclaw/workspaces/<agent-id>",
   "agentDir": "/home/<user>/.openclaw/agents/<agent-id>/agent",
-  "sessionsDir": "/home/<user>/.openclaw/agents/<agent-id>/sessions",
   "model": "anthropic/claude-sonnet-4-5"
 }
 ```
 
-⚠️ **CRITICAL:** The `sessionsDir` field is REQUIRED for isolated agents. Without it, you'll get "Session file path must be within sessions directory" errors.
+⚠️ **CRITICAL:** Do NOT add a `sessionsDir` field to the agent config. Adding `sessionsDir` will cause the gateway to fail to start. OpenClaw infers the sessions directory automatically from `agentDir`.
 
 #### Binding Entry (under `bindings`)
 
@@ -220,12 +219,33 @@ Should show the agent with correct routing rules.
 
 ## Common Mistakes to Avoid
 
+### ❌ Wrong: Adding sessionsDir to agent config
+```json
+{
+  "id": "my-agent",
+  "agentDir": "/home/user/.openclaw/agents/my-agent/agent",
+  "workspace": "/home/user/.openclaw/workspaces/my-agent",
+  "sessionsDir": "/home/user/.openclaw/agents/my-agent/sessions"  // WRONG! This breaks startup!
+}
+```
+
+### ✅ Correct: Omit sessionsDir (it's inferred automatically)
+```json
+{
+  "id": "my-agent",
+  "name": "My Agent",
+  "agentDir": "/home/user/.openclaw/agents/my-agent/agent",
+  "workspace": "/home/user/.openclaw/workspaces/my-agent",
+  "model": "anthropic/claude-sonnet-4-5"
+}
+```
+
 ### ❌ Wrong: Using accountId for group binding
 ```json
 {
   "match": {
     "channel": "telegram",
-    "accountId": "-5147393542"  // WRONG!
+    "accountId": "-5468435478"  // WRONG!
   }
 }
 ```
@@ -237,35 +257,15 @@ Should show the agent with correct routing rules.
     "channel": "telegram",
     "peer": {
       "kind": "group",
-      "id": "-5147393542"
+      "id": "-5468435478"
     }
   }
 }
 ```
 
-### ❌ Wrong: Missing sessionsDir
-```json
-{
-  "id": "my-agent",
-  "agentDir": "...",
-  "workspace": "..."
-  // sessionsDir missing!
-}
-```
-
-### ✅ Correct: Include sessionsDir
-```json
-{
-  "id": "my-agent",
-  "agentDir": "/home/user/.openclaw/agents/my-agent/agent",
-  "workspace": "/home/user/.openclaw/workspaces/my-agent",
-  "sessionsDir": "/home/user/.openclaw/agents/my-agent/sessions"
-}
-```
-
 ### ❌ Wrong: Using --bind flag with group ID
 ```bash
-openclaw agents add myagent --bind "telegram:-5147393542"
+openclaw agents add myagent --bind "telegram:-5468435478"
 # Creates incorrect accountId binding
 ```
 
@@ -276,14 +276,11 @@ Add the proper peer-based binding to openclaw.json after creating the agent.
 
 ## Troubleshooting
 
-### "Session file path must be within sessions directory"
+### Gateway fails to start after adding agent
 
-**Cause:** Missing `sessionsDir` in agent config.
+**Cause:** You added `sessionsDir` to the agent config.
 
-**Fix:** Add `sessionsDir` to the agent entry in openclaw.json:
-```json
-"sessionsDir": "/home/<user>/.openclaw/agents/<agent-id>/sessions"
-```
+**Fix:** Remove the `sessionsDir` field from the agent entry in openclaw.json. OpenClaw infers the sessions directory automatically.
 
 ### Agent not responding in group
 
@@ -358,7 +355,6 @@ Then edit `~/.openclaw/openclaw.json`:
         "name": "BibleMate",
         "workspace": "/home/username/.openclaw/workspaces/bible-study",
         "agentDir": "/home/username/.openclaw/agents/bible-study/agent",
-        "sessionsDir": "/home/username/.openclaw/agents/bible-study/sessions",
         "model": "anthropic/claude-sonnet-4-5"
       }
     ]
@@ -370,7 +366,7 @@ Then edit `~/.openclaw/openclaw.json`:
         "channel": "telegram",
         "peer": {
           "kind": "group",
-          "id": "-5147393542"
+          "id": "-5468435478"
         }
       }
     }
@@ -378,7 +374,7 @@ Then edit `~/.openclaw/openclaw.json`:
   "channels": {
     "telegram": {
       "groups": {
-        "-5147393542": {
+        "-5468435478": {
           "requireMention": false
         }
       }
@@ -397,7 +393,8 @@ systemctl --user restart openclaw-gateway
 ## Notes
 
 - All paths must be **absolute** (not relative or using `~`)
-- The `main` agent uses defaults and doesn't need explicit sessionsDir
+- Do NOT add `sessionsDir` to agent config — it will break startup
+- The `main` agent uses defaults and doesn't need explicit paths
 - Bindings are evaluated most-specific-first (peer > accountId > channel)
 - Skills in workspace `skills/` folder override shared skills in `~/.openclaw/skills/`
 - Each agent has its own conversation history (no cross-talk)

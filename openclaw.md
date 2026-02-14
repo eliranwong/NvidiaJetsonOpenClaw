@@ -59,6 +59,15 @@ Select skills according to your needs. Some skills require their own API keys:
 - [Nano Banana](google_ai_plan.md)
 - [Notion API](https://www.notion.com/my-integrations)
 
+## Install Custom Skills
+
+```
+git clone https://github.com/eliranwong/NvidiaJetsonOpenClaw
+cp -r NvidiaJetsonOpenClaw/skills ~/.openclaw/
+rm ~/.openclaw/skills/README.md
+openclaw gateway restart
+```
+
 # Enable Web Search
 
 Create a Brave Search API Key at https://api-dashboard.search.brave.com/app/keys
