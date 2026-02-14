@@ -6,7 +6,7 @@ metadata: {"openclaw":{"emoji":"📖","requires":{"bins":["mcporter"]}}}
 
 # Biblemate (MCP)
 
-Bible study MCP server with 48 tools. Use `mcporter call biblemate.<tool>` for all Bible-related queries.
+Bible study MCP server with 49 tools. Use `mcporter call biblemate.<tool>` for all Bible-related queries.
 
 ## Workflow: Structured Bible Study
 
