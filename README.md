@@ -8,6 +8,8 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 
 - Nvidia Jetson Orin Nano Super Developer Kit
 
+![Image](https://github.com/user-attachments/assets/2c9e2a44-a2f3-4d04-994d-efbac5ea7fb5)
+
 ## Tested AI Backends
 
 - Google Antigravity Models
