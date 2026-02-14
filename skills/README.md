@@ -1,0 +1,1 @@
+Tested skills are placed in the skills directory. 
