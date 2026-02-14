@@ -7,11 +7,30 @@ npm install -g openclaw@latest
 openclaw onboard --install-daemon
 ```
 
-## Configure AI Backends
+## Add AI Provider Plugins
 
-Select your AI backend during onboard. For Google, choose **Google Antigravity**.
+Read https://docs.openclaw.ai/concepts/model-providers#google-vertex-antigravity-and-gemini-cli
 
-Tips: Connect a bluetooth keyboard and a mouse to your Pixel Phone to make the authentication process easier:
+For Google Antigravity:
+
+```
+openclaw plugins enable google-antigravity-auth
+openclaw gateway restart
+openclaw models auth login --provider google-antigravity --set-default
+openclaw gateway restart
+```
+
+For Gemini CLI:
+
+```
+openclaw plugins enable google-gemini-cli-auth
+openclaw gateway restart
+openclaw models auth login --provider google-gemini-cli --set-default
+openclaw gateway restart
+```
+
+## Auth
+
 1. Click the url provided by the onboard process in the Chrome browser on your Pixel Phone.
 2. Authenticate with your Google account.
 3. Click the "Allow" button to allow OpenClaw to access your Google account.
@@ -20,9 +39,13 @@ Tips: Connect a bluetooth keyboard and a mouse to your Pixel Phone to make the a
 6. Press Enter.
 7. The authentication process will complete.
 
-## Configure Providers (Azure OpenAI & Anthropic)
+## Configure Azure OpenAI & Claude Models
 
 Set up [Providers](providers.md) according to your needs.
+
+Optional Remove the "models" entry under the main agent and sub-agents, as they limit model selection if the list provided is not exhaustive.
+
+> openclaw gateway restart
 
 ## Gateway
 
@@ -36,16 +59,17 @@ Select skills according to your needs. Some skills require their own API keys:
 - [Nano Banana](google_ai_plan.md)
 - [Notion API](https://www.notion.com/my-integrations)
 
-## Gateway Token
+# Enable Web Search
 
-Pay attention to the gateway token displayed at the end of the installation process — it is different from the Telegram bot token.
+Create a Brave Search API Key at https://api-dashboard.search.brave.com/app/keys
 
-1. Open `http://127.0.0.1:18789/` Chrome browser on your Pixel Phone.
-2. Go to the `Overview` tab.
-3. Enter the Gateway Token.
-4. Click on the `Connect` button.
+> openclaw configure --section web
 
-### Install like an Android App
+- Enable web_search -> Yes
+- Enable web_fetch -> Yes
 
-1. Select `Add to home screen` in the Chrome browser menu on your Pixel Phone.
-2. Select `Install` in the dialog that appears.
+## Access from Local Machine
+
+> ssh username@ubuntu.local
+
+> openclaw tui

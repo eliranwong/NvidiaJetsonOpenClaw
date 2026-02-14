@@ -9,7 +9,7 @@ alias files="python3 -m http.server 9999"
 On a local machine, add the following line in `~/.bashrc`
 
 ```
-alias nano="open http://$(getent hosts ubuntu.local | awk '{print $1}'):9999"
+alias nanofiles="open http://$(getent hosts ubuntu.local | awk '{print $1}'):9999"
 ```
 
 ## File Access
@@ -20,4 +20,4 @@ On the Jetson Kit, run:
 
 On the local machine, run:
 
-> nano
+> nanofiles

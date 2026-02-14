@@ -48,3 +48,9 @@ else
   echo "BibleMate AI MCP mini server is already running."
 fi
 ```
+
+On a local machine, add the following line in `~/.bashrc`
+
+```
+alias nanobible="open http://$(getent hosts ubuntu.local | awk '{print $1}'):33355"
+```
