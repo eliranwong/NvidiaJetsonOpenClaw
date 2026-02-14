@@ -6,6 +6,15 @@ source ai/bin/activate
 pip install -U biblemate biblemateweb biblematedata
 ```
 
+## Configure AI Backend
+
+Run `ai -ec`, edit the values of `DEFAULT_AI_BACKEND` and `GOOGLEAI_API_KEY`, e.g.:
+
+```
+DEFAULT_AI_BACKEND=googleai
+GOOGLEAI_API_KEY=<your_gemini_api_key>
+```
+
 ## Setup BibleMate Data
 
 ```
