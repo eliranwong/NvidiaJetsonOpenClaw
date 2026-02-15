@@ -4,6 +4,8 @@
 python3 -m venv ai
 source ai/bin/activate
 pip install -U biblemate biblemateweb biblematedata
+# Support document conversion
+sudo apt install pandoc texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex
 ```
 
 ## Configure AI Backend

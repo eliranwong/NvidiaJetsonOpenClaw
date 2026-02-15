@@ -53,13 +53,9 @@ Set up [Telegram](telegram.md) as the messaging gateway.
 
 ## Skills
 
-Select skills according to your needs. Some skills require their own API keys:
+Install all available builtin skills, except `sag` (You do not need the sag skill. OpenClaw's native tts tool functions correctly on Linux arm64 and can be used for text-to-speech without any additional installation.).
 
-- [Google Places](google_ai_plan.md)
-- [Nano Banana](google_ai_plan.md)
-- [Notion API](https://www.notion.com/my-integrations)
-
-## Install Custom Skills
+### Install Custom Skills
 
 ```
 git clone https://github.com/eliranwong/NvidiaJetsonOpenClaw
@@ -67,6 +63,29 @@ cp -r NvidiaJetsonOpenClaw/skills ~/.openclaw/
 rm ~/.openclaw/skills/README.md
 openclaw gateway restart
 ```
+
+### Audio Transcription
+
+Ask the main agent to set up GPU-accelerated Whisper local CLI, as the Homebrew version uses a bundled CPU-only PyTorch.
+
+With the custom skill installed, ask the main agent to add your preferred transcription order to TOOLS.md, if it is not already in the file `~/.openclaw/workspace/TOOLS.md`.
+
+For example:                                                                   
+                                                                               
+```markdown                                                                    
+### Audio Transcription
+
+- Preferred: `~/.local/bin/whisper-gpu` (GPU-accelerated, Jetson Orin)
+- Fallback: `openai-whisper-api` (cloud, if local fails or for complex audio)
+
+Note: GPU Whisper uses PyTorch 2.5 with CUDA on Jetson Orin. Much faster than CPU.                   
+```
+
+### API Keys Required for Some Skills
+
+- [Google Places](google_ai_plan.md)
+- [Nano Banana](google_ai_plan.md)
+- [Notion API](https://www.notion.com/my-integrations)
 
 # Enable Web Search
 

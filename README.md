@@ -32,6 +32,10 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 9. [Set up Telegram bot & groups](telegram.md)
 10. [Configure shell environment](.bashrc)
 
+## Optional Setup
+
+* [Change Power Mode](change_power_mode.md)
+
 ## Custom MCP Server
 
 [BibleMate AI MCP](biblemate_ai.md)

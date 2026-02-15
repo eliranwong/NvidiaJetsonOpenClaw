@@ -38,11 +38,17 @@ Assuming you have installed the [custom skill](openclaw.md#install-custom-skills
 3. Create a new Telegram group.
 4. Add the bot to the group.
 5. In the **newly created group chat**, send: `@mybot_bot What is the current group id?`
+
+Trouble-shooting: The bot does not response in the new group. Ask the main agent to change the groupPolicy to "open" temporarily. Messages are being received but skipped with reason "not-allowed" even after changing to groupPolicy: "open". This suggests the gateway may need a full restart (not just hot reload). Ask the main agent to check the logs if it can find the newly created group id:
+
+ Group ID: -5219211952                                                          
+ Title: "Image Generation"
+
 6. Copy the group ID from the bot's reply.
 7. In the **main agent chat** (not the group chat), ask the main agent to bind the newly created agent to the group using the ID from the previous step, e.g.:
 
 ```
-I created a new Telegram group, with a group id -5888888888. I want you to create an isolated agent bible-study and bind it to that group, so I can talk to the bible-study agent in the group. Configure the bible-study agent to use model `google-gemini-cli/gemini-3-flash-preview`.
+I created a new Telegram group, with a group id -5888888888. I want you to create an isolated agent image-generator and bind it to that group, so I can talk to the image-generator agent in the group. Configure the image-generator agent to use model `google-antigravity/gemini-3-pro-high`.
 ```
 
 8. Specify the model to use for the agent in the group chat.

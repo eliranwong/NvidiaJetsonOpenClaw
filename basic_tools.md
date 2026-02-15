@@ -7,9 +7,26 @@ sudo apt update && sudo apt full-upgrade
 sudo reboot
 ```
 
+## Install nvidia-jetpack
+
+The nvidia-jetpack includes CUDA 12.6 and cuDNN.
+
+```
+sudo apt install nvidia-jetpack
+```
+
 ## Install Common Tools
 
 Install tools suggested at https://github.com/eliranwong/MultiAMDGPU_AIDev_Ubuntu/blob/main/ubuntu_desktop/basic.md#basic-tools--libraries , according to your own needs
+
+## Tool for Document Conversion
+
+```
+# texlive-full is too heavy for Jetson nano to install
+#sudo apt install pandoc texlive-full
+# Alternative
+sudo apt install pandoc texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex
+```
 
 ## Install Node.js
 
