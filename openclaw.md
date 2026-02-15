@@ -64,28 +64,25 @@ rm ~/.openclaw/skills/README.md
 openclaw gateway restart
 ```
 
-### Audio Transcription
-
-Ask the main agent to set up GPU-accelerated Whisper local CLI, as the Homebrew version uses a bundled CPU-only PyTorch.
-
-With the custom skill installed, ask the main agent to add your preferred transcription order to TOOLS.md, if it is not already in the file `~/.openclaw/workspace/TOOLS.md`.
-
-For example:                                                                   
-                                                                               
-```markdown                                                                    
-### Audio Transcription
-
-- Preferred: `~/.local/bin/whisper-gpu` (GPU-accelerated, Jetson Orin)
-- Fallback: `openai-whisper-api` (cloud, if local fails or for complex audio)
-
-Note: GPU Whisper uses PyTorch 2.5 with CUDA on Jetson Orin. Much faster than CPU.                   
-```
-
-### API Keys Required for Some Skills
+### API Keys Required for Some Builtin Skills
 
 - [Google Places](google_ai_plan.md)
 - [Nano Banana](google_ai_plan.md)
 - [Notion API](https://www.notion.com/my-integrations)
+
+### Add API Keys for Custom Skills
+
+To add Groq API key, for example:
+
+```
+openclaw config set env.GROQ_API_KEY <your_groq_api_key>
+```
+
+### Audio Transcription
+
+Ask the main agent to set up GPU-accelerated Whisper local CLI, as the Homebrew version uses a bundled CPU-only PyTorch.
+
+Remarks: The preferred transcription order is written in the custom skill `groq-whisper`
 
 # Enable Web Search
 
