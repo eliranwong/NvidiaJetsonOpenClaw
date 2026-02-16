@@ -76,7 +76,7 @@ echo "Hook files created."
 # Attempt to find openclaw in PATH or use known location
 OPENCLAW_BIN=$(which openclaw)
 if [ -z "$OPENCLAW_BIN" ]; then
-    OPENCLAW_BIN="/home/eliran/.nvm/versions/node/v24.13.1/bin/openclaw"
+    OPENCLAW_BIN="~/.nvm/versions/node/v24.13.1/bin/openclaw"
 fi
 
 if [ -x "$OPENCLAW_BIN" ]; then

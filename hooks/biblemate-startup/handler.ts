@@ -10,7 +10,7 @@ const handler: HookHandler = async (event) => {
   console.log("[biblemate-startup] Running startup script...");
 
   // Execute the bash script
-  exec("/home/eliran/.openclaw/scripts/startup-biblemate.sh", (error, stdout, stderr) => {
+  exec("~/.openclaw/scripts/startup-biblemate.sh", (error, stdout, stderr) => {
     if (error) {
       console.error(`[biblemate-startup] Execution error: ${error.message}`);
       return;

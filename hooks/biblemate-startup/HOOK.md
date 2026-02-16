@@ -9,7 +9,7 @@ metadata:
 
 # BibleMate Startup
 
-This hook runs the `/home/eliran/.openclaw/scripts/startup-biblemate.sh` script when the OpenClaw gateway starts.
+This hook runs the `~/.openclaw/scripts/startup-biblemate.sh` script when the OpenClaw gateway starts.
 
 It ensures that:
 - The BibleMate WEB server is running.

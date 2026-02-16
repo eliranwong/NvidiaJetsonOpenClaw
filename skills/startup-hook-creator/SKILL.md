@@ -24,7 +24,7 @@ nohup python3 -m http.server 8080 &
 ### 2. Run the skill command
 
 ```bash
-/home/eliran/.openclaw/skills/startup-hook-creator/create.sh <hook_name> <script_path> [description]
+~/.openclaw/skills/startup-hook-creator/create.sh <hook_name> <script_path> [description]
 ```
 
 **Parameters:**
@@ -35,8 +35,8 @@ nohup python3 -m http.server 8080 &
 ### Example
 
 ```bash
-# Create and enable a hook named 'web-server-start' that runs the script at /home/eliran/scripts/start-web.sh
-/home/eliran/.openclaw/skills/startup-hook-creator/create.sh web-server-start /home/eliran/scripts/start-web.sh "Starts local web server"
+# Create and enable a hook named 'web-server-start' that runs the script at ~/scripts/start-web.sh
+~/.openclaw/skills/startup-hook-creator/create.sh web-server-start ~/scripts/start-web.sh "Starts local web server"
 ```
 
 ## What it does

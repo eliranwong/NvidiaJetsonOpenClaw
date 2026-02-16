@@ -27,51 +27,18 @@ https://github.com/eliranwong/NvidiaJetsonOpenClaw/blob/main/basic_tools.md#inst
 biblematedata
 ```
 
-## Edit ~/.bashrc
+## Autostart BibleMate Servers
 
-Add the following lines in `~/.bashrc`
+Copy the `hooks` and `scripts` content from this repository to `.openclaw/hooks` and `.openclaw/scripts` respectively, and run:
 
-```
-# Setup venv path
-export PATH=$PATH:$HOME/ai/bin
+> openclaw gateway restart
 
-# BibleMate servers
-## web server
-start_bmweb() {
-  echo "Starting BibleMate AI WEB server ..."
-  nohup biblemateweb &
-  echo "BibleMate AI WEB server started."
-}
-### Check if BibleMate WEB server is already running
-if ! pgrep -f "/bin/biblemateweb" > /dev/null; then
-  start_bmweb
-else
-  echo "BibleMate AI WEB server is already running."
-fi
-## mcp mini server
-start_bmmcpmini() {
-  echo "Starting BibleMate MCP mini server ..."
-  nohup bmmcpmini -b googleai -p 33334 &
-  echo "BibleMate AI MCP mini server started."
-}
-### Check if BibleMate MCP mini server is already running
-if ! pgrep -f "/bin/bmmcpmini" > /dev/null; then
-  start_bmmcpmini
-else
-  echo "BibleMate AI MCP mini server is already running."
-fi
-```
+## Access Web Server from a Local Machine
 
 On a local machine, add the following line in `~/.bashrc`
 
 ```
 alias nanobible="open http://$(getent hosts ubuntu.local | awk '{print $1}'):33355"
-```
-
-## Refresh Environment Variables
-
-```
-source ~/.bashrc
 ```
 
 ## Configure Custom MCP

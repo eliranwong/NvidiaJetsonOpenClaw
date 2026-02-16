@@ -35,6 +35,7 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 ## Optional Setup
 
 * [Change Power Mode](change_power_mode.md)
+* [Memory Optimization](memory_optimization.md)
 
 ## Custom MCP Server
 
