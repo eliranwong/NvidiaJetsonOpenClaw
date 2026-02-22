@@ -17,6 +17,7 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 - Claude Models via Azure Foundry
 - Claude Code via Azure Foundry Claude models
 - OpenAI Models via Azure Foundry
+- OpenAI Codex via Azure Foundry OpenAI models
 - OpenAI API models
 
 ## OpenClaw Setup
@@ -36,6 +37,7 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 
 * [Change Power Mode](change_power_mode.md)
 * [Memory Optimization](memory_optimization.md)
+* [Gog CLI](gog_cli.md)
 
 ## Custom MCP Server
 

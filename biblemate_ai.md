@@ -21,6 +21,12 @@ In addition, make sure ollama is set up and `paraphrase-multilingual` is downloa
 
 https://github.com/eliranwong/NvidiaJetsonOpenClaw/blob/main/basic_tools.md#install-ollama
 
+## Setup Gog CLI
+
+Gog CLI is required for uploading the bible study results to Google Drive automatically.
+
+Follow the instructions in [Gog CLI Setup](gog_cli.md).
+
 ## Setup BibleMate Data
 
 ```

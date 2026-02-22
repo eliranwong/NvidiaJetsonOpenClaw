@@ -372,13 +372,212 @@ Provide an integrated response:
 
 ---
 
+## Google Drive Integration
+
+After completing a Bible study, archive all work to Google Drive for future reference.
+
+### Configuration
+
+- **Root Folder ID:** `1nAtV-o7SLPKhloDEy0slhqqQxZVQmkAs`
+- **Root Folder Name:** `bible-study-agent`
+- **Web Link:** https://drive.google.com/drive/folders/1nAtV-o7SLPKhloDEy0slhqqQxZVQmkAs
+
+> ⚠️ Always use this folder ID. Check `memory/google-drive.md` if unsure.
+
+### Workflow: Save Study to Google Drive
+
+After generating the Final Report, follow these steps:
+
+#### Step 1: Generate Study Title
+
+Create a descriptive, filesystem-safe title for the study:
+- Format: `YYYY-MM-DD - Topic or Passage`
+- Example: `2026-02-21 - Born Again in John 3`
+- Keep it concise but descriptive
+
+#### Step 2: Create Study Subfolder
+
+```bash
+gog drive mkdir "2026-02-21 - Born Again in John 3" --parent 1nAtV-o7SLPKhloDEy0slhqqQxZVQmkAs --json
+```
+
+Capture the subfolder ID from the response.
+
+#### Step 3: Save Request Refinement and Study Plan
+
+**Before executing any tools**, save the request refinement and preliminary action plan:
+
+```bash
+mkdir -p /tmp/bible-study-output
+
+# Save as the FIRST file (00 prefix)
+# File: 00-request-and-study-plan.md
+```
+
+This file should contain:
+1. **Request Refinement** — Original request, issues identified, refinements applied, refined request
+2. **Preliminary Action Plan** — Study type, depth, numbered steps with tools and purposes, measurable outcomes
+
+This documents the planning phase and provides context for all subsequent outputs.
+
+#### Step 4: Execute Tools and Save Outputs
+
+Save each MCP tool output as a separate file:
+
+```bash
+# Example filenames:
+# - 00-request-and-study-plan.md  ← NEW: Planning phase
+# - 01-verses-john-3-1-8.md
+# - 02-interlinear-analysis.md
+# - 03-cross-references.md
+# - 04-commentary.md
+# - 05-theological-exposition.md
+# - 06-applications.md
+# - final-report.md
+```
+
+Use numbered prefixes to preserve execution order.
+
+#### Step 5: Convert Markdown to DOCX
+
+Use pandoc to convert each markdown file to docx format:
+
+```bash
+# Convert all markdown files to docx
+for f in /tmp/bible-study-output/*.md; do
+  pandoc "$f" -o "${f%.md}.docx"
+done
+```
+
+This creates both `.md` and `.docx` versions of every file.
+
+#### Step 6: Upload All Files
+
+Upload both markdown and docx files to the study subfolder:
+
+```bash
+# Upload markdown files
+for f in /tmp/bible-study-output/*.md; do
+  gog drive upload "$f" --parent <subfolder-id>
+done
+
+# Upload docx files
+for f in /tmp/bible-study-output/*.docx; do
+  gog drive upload "$f" --parent <subfolder-id>
+done
+```
+
+#### Step 7: Send Final Report DOCX to Telegram
+
+Send the final report docx file directly to the Telegram group:
+
+```
+Use the message tool with action=send and filePath=/tmp/bible-study-output/final-report.docx
+```
+
+#### Step 8: Share Study Folder
+
+Share the study subfolder with read-only access (anyone with link can view):
+
+```bash
+gog drive share <subfolder-id> --to anyone --role reader
+```
+
+Then send the shared link to the Telegram group. The link format is:
+`https://drive.google.com/drive/folders/<subfolder-id>`
+
+#### Step 9: Confirm Upload
+
+```bash
+# List uploaded files
+gog drive ls <subfolder-id>
+```
+
+#### Step 10: Cleanup
+
+```bash
+rm -rf /tmp/bible-study-output
+```
+
+### Output File Naming Convention
+
+| Step | Filename Pattern | Example |
+|------|-----------------|---------|
+| **Request & Plan** | `00-request-and-study-plan.md` | `00-request-and-study-plan.md` |
+| Verse retrieval | `01-verses-<reference>.md` | `01-verses-john-3-1-8.md` |
+| Interlinear | `02-interlinear-<reference>.md` | `02-interlinear-john-3-3-7.md` |
+| Cross-references | `03-cross-references.md` | `03-cross-references.md` |
+| Commentary | `04-commentary.md` | `04-commentary.md` |
+| Thematic/Theological | `05-theological-<topic>.md` | `05-theological-regeneration.md` |
+| Application | `06-applications.md` | `06-applications.md` |
+| Final Report | `final-report.md` | `final-report.md` |
+
+> **Note:** The `00-request-and-study-plan.md` file captures the request refinement and preliminary action plan BEFORE tool execution begins. This provides crucial context for the study.
+
+### Example Complete Flow
+
+```bash
+# 1. Create subfolder
+STUDY_FOLDER=$(gog drive mkdir "2026-02-21 - Born Again in John 3" \
+  --parent 1nAtV-o7SLPKhloDEy0slhqqQxZVQmkAs --json | jq -r '.folder.id')
+
+# 2. Create local output directory
+mkdir -p /tmp/bible-study-output
+
+# 3. Save request refinement and study plan FIRST
+# Write 00-request-and-study-plan.md with:
+#   - Request Refinement (original, issues, refinements, refined request)
+#   - Preliminary Action Plan (study type, depth, steps, outcomes)
+
+# 4. Execute tools and save each output to /tmp/bible-study-output/*.md
+# Files: 01-verses.md, 02-summary.md, 03-context.md, etc.
+
+# 5. Create final integrated report
+# File: final-report.md
+
+# 6. Convert all markdown to docx
+for f in /tmp/bible-study-output/*.md; do
+  pandoc "$f" -o "${f%.md}.docx"
+done
+
+# 7. Upload all files (both md and docx)
+for f in /tmp/bible-study-output/*.md /tmp/bible-study-output/*.docx; do
+  gog drive upload "$f" --parent "$STUDY_FOLDER"
+done
+
+# 8. Send final report docx to Telegram
+# Use: message tool with action=send, filePath=/tmp/bible-study-output/final-report.docx
+
+# 9. Share folder with read-only access
+gog drive share "$STUDY_FOLDER" --to anyone --role reader
+
+# 10. Send shared link to Telegram
+# Link: https://drive.google.com/drive/folders/$STUDY_FOLDER
+
+# 9. Verify
+gog drive ls "$STUDY_FOLDER"
+
+# 10. Cleanup
+rm -rf /tmp/bible-study-output
+```
+
+### Telegram Delivery Checklist
+
+After completing a study, send to the Telegram group:
+
+1. ✅ **Text summary** — Brief response in chat
+2. ✅ **Final report DOCX** — Send as file attachment using message tool
+3. ✅ **Shared folder link** — Read-only Google Drive link to all study materials
+
+---
+
 ## Notes
 
 - **Always refine first:** Even simple requests benefit from clarification
 - **Skip refinement only if:** The request is already precise with clear scope and intent
 - All tools take a `request` parameter (string) — make it detailed and specific
 - For verse references, use standard format: `Book Chapter:Verse` (e.g., `John 3:16`, `Gen 1:1-3`)
-- Adjust steps based on complexity (simple = 3-4, complex = 5-7)
+- Adjust steps based on complexity (simple = 3-4, complex = 5-7, comprehensive <= 50)
 - Always include original language tools for exegetical questions
-- The final report should **integrate** findings, not concatenate outputs
+- The final report should **integrate** findings in detail, not concatenate outputs
 - If a tool returns thin results, **refine the input** and retry before moving on

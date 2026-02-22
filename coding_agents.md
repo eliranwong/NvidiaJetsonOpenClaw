@@ -4,6 +4,14 @@
 
 - Node.js 22.x
 
+## OpenAI Codex via Azure Foundry
+
+> mkdir -p ~/.codex
+
+Follow the instructions at:
+
+https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/codex?view=foundry-classic&tabs=npm
+
 ## Claude Code via Azure Foundry
 
 Set the following environment variables (replace the placeholder values with your own):
