@@ -19,6 +19,15 @@ sudo apt install nvidia-jetpack
 
 Install tools suggested at https://github.com/eliranwong/MultiAMDGPU_AIDev_Ubuntu/blob/main/ubuntu_desktop/basic.md#basic-tools--libraries , according to your own needs
 
+## Tool for Mouse and Keyboard Control
+
+```
+sudo apt install xdotool
+echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/bin/xdotool" | sudo tee /etc/sudoers.d/xdotool
+# applicable to wayland user only; uncomment the following line
+#sudo usermod -aG input $USER
+```
+
 ## Tool for Document Conversion
 
 ```

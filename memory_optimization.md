@@ -1,8 +1,8 @@
 # Memory Optimization
 
 ```
-# To disable gui on boot
-sudo systemctl set-default multi-user.target
+# To disable gui on boot; uncomment the following line
+#sudo systemctl set-default multi-user.target
 # To disable camera service
 sudo systemctl disable nvargus-daemon.service
 # To disable nvram config
@@ -21,3 +21,5 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 # Reboot
 sudo reboot
 ```
+
+Additional reference: https://www.jetson-ai-lab.com/archive/tips_ram-optimization.html
