@@ -88,6 +88,8 @@ Remarks: The preferred transcription order is written in the custom skill `groq-
 
 Create a Brave Search API Key at https://api-dashboard.search.brave.com/app/keys
 
+> openclaw config set env.BRAVE_API_KEY <your_brave_api_key>
+
 > openclaw configure --section web
 
 - Enable web_search -> Yes

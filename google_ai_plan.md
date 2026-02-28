@@ -1,6 +1,8 @@
 # Google AI Plan and API Setup
 
-OpenClaw supports multiple AI backends. I use Google Antigravity Models (both Gemini and Claude models) as my primary backend. Below is my setup.
+**Updates** - Read https://docs.openclaw.ai/concepts/model-providers#google-vertex-antigravity-and-gemini-cli for the caution note andlatest setup instructions.
+
+OpenClaw supports multiple AI backends. Below is my setup for Google AI services.
 
 ## Subscribe to Google AI Pro Plan
 

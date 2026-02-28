@@ -69,11 +69,3 @@ npm install -g clawhub@latest
 npm install -g @steipete/summarize@latest
 npm install -g @mariozechner/pi-ai@latest
 ```
-
-## Install Ollama
-
-Read https://ollama.com/, and run:
-
-> curl -fsSL https://ollama.com/install.sh | sh
-
-> ollama pull paraphrase-multilingual

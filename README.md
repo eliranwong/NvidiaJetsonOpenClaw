@@ -12,6 +12,7 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 
 ## Tested AI Backends
 
+- Ollama glm-5:cloud
 - Google Antigravity Models
 - Gemini CLI via Vertex AI
 - Claude Models via Azure Foundry
@@ -22,16 +23,17 @@ Goal: Turn my Nvidia Jetson Orin Nano Super Developer Kit into 24/7 AI assistant
 
 ## OpenClaw Setup
 
-1. [Google AI Plan and API Setup](google_ai_plan.md)
-2. [Azure Deployment](azure_deployment.md)
-3. [Install Jetson Linux](jetson_linux.md)
-4. [Connect the kit via SSH](ssh_connection.md)
-5. [Set up File Sharing](file_sharing.md)
-6. [Install basic tools](basic_tools.md)
-7. [Install OpenClaw](openclaw.md)
-8. [Install coding agents](coding_agents.md)
-9. [Set up Telegram bot & groups](telegram.md)
-10. [Configure shell environment](.bashrc)
+1. [Ollama Setup](ollama.md)
+2. [Google AI Plan and API Setup](google_ai_plan.md)
+3. [Azure Deployment](azure_deployment.md)
+4. [Install Jetson Linux](jetson_linux.md)
+5. [Connect the kit via SSH](ssh_connection.md)
+6. [Set up File Sharing](file_sharing.md)
+7. [Install basic tools](basic_tools.md)
+8. [Install OpenClaw](openclaw.md)
+9. [Install coding agents](coding_agents.md)
+10. [Set up Telegram bot & groups](telegram.md)
+11. [Configure shell environment](.bashrc)
 
 ## Optional Setup
 
