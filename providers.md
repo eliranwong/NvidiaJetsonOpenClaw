@@ -145,5 +145,3 @@ Important: To use Azure Claude & OpenAI Models, replace `<your_resource_name>`, 
 Remarks:
 
 - The `username` in the `workspace` path is the Linux username on the machine where OpenClaw is running.
-- Either use "azure-openai-responses/gpt-5.2-codex": {}, or "azure-openai-responses/gpt-5.2": {}, but not both, in agent settings.
-- Change the "api" of "azure-openai-responses" to "openai-completions" when using gpt-5.2, [read more ...](https://github.com/openclaw/openclaw/discussions/13307)
