@@ -61,7 +61,7 @@ Solution:
 
 1. In the main agent chat, send, e.g.:
 
-> I created a new Telegram group "Personal Assistant".  I asked you there about the group id, without a response. Please check the logs for me to retrieve the group id.
+> I created a new Telegram group "Personal Assistant".  I asked you there about the group id, without a response. Please check the logs for me to retrieve the group id, finding from the output of the command `openclaw logs --follow`.
 
 2. Copy the retrieved group, e.g. -5888888888, id for the next step.
 
