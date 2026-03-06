@@ -67,4 +67,13 @@ Solution:
 
 3. In the main agent chat, send, e.g.:
 
-> Please add the Telegram group (group id -5888888888) to the channels.telegram.groups in openclaw.json, to allow messages in the group. Create an isolated agent personal-assistant and bind it to that group, so I can talk to the personal-assistant agent in the group. Configure the personal-assistant agent to use model `google-gemini-cli/gemini-3-flash-preview`.
+If the method above does not work:
+
+1. Open https://web.telegram.org/k/ or https://web.telegram.org/z/
+2. Click on the "Text to Speech" group
+3. Look at the URL - it will show something like https://web.telegram.org/k/#-1001234567890
+4. The number after # is your group ID (including the -)
+
+After finding the group id, send the following message to the main agent:
+
+> Please add the Telegram group (group id -5888888888) to the channels.telegram.groups in openclaw.json, to allow messages in the group. Create an isolated agent personal-assistant and bind it to that group, so I can talk to the personal-assistant agent in the group. Configure the personal-assistant agent to use model `ollama/glm-5:cloud`.
