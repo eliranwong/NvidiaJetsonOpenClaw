@@ -15,6 +15,20 @@ The nvidia-jetpack includes CUDA 12.6 and cuDNN.
 sudo apt install nvidia-jetpack
 ```
 
+### Check CUDA Version
+
+```
+cat /usr/local/cuda/version.json | grep '"version"' | head -1
+```
+
+### Install Jetson-AI-Lab onnxruntime-gpu
+
+```
+python3 -m venv ai
+source ai/bin/activate
+pip3 install onnxruntime-gpu --index-url https://pypi.jetson-ai-lab.io/jp6/cu126
+```
+
 ## Install Common Tools
 
 Install tools suggested at https://github.com/eliranwong/MultiAMDGPU_AIDev_Ubuntu/blob/main/ubuntu_desktop/basic.md#basic-tools--libraries , according to your own needs
