@@ -12,7 +12,6 @@ Subscribe to a cloud plan at https://ollama.com/pricing
 
 ```
 ollama signin
-ollama launch openclaw --config
 ```
 
 Read more at https://docs.ollama.com/integrations/openclaw

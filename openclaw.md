@@ -7,6 +7,12 @@ npm install -g openclaw@latest
 openclaw onboard --install-daemon
 ```
 
+## Configure Ollama Models
+
+```
+ollama launch openclaw --config
+```
+
 ## Add AI Provider Plugins
 
 Read https://docs.openclaw.ai/concepts/model-providers#google-vertex-antigravity-and-gemini-cli
@@ -100,3 +106,18 @@ Create a Brave Search API Key at https://api-dashboard.search.brave.com/app/keys
 > ssh username@ubuntu.local
 
 > openclaw tui
+
+## Upgrade
+
+For example, upgrading to a newer nvm version:
+
+```
+nvm install 24 # change version number here
+npm install -g mcporter@latest
+npm install -g clawhub@latest
+npm install -g @steipete/summarize@latest
+npm install -g @mariozechner/pi-ai@latest
+npm install -g openclaw@latest
+npm install -g @google/gemini-cli@latest
+npm install -g @openai/codex@latest
+```
